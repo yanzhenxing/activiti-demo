@@ -8,15 +8,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.quauq.yanzhenxing.activiti.service.UserService;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/test")
 public class TestController {
 
 	@Autowired
 	private UserService userService;
 	
+	@RequestMapping("login")
+	public String login(Model model){
+		return "modules/sys/login";
+	}
+	
 	@RequestMapping("index")
 	public String index(Model model){
-		userService.add();
+//		userService.add();
 		model.addAttribute("name", "闫振兴");
 		return "index";
 	}
