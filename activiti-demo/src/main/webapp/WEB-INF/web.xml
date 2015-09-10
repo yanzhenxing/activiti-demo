@@ -7,7 +7,10 @@
 	<!-- 加载spring配置文件 -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>classpath*:/application-context.xml</param-value>
+		<param-value>
+			classpath*:/application-context.xml,
+			classpath*:/application-context-shiro.xml
+		</param-value>
 	</context-param>
 
 	<!-- Listeners -->
