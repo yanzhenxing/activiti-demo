@@ -4,6 +4,51 @@
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+        <dependent-module archiveName="activiti-engine-5.17.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/activiti-engine/activiti-engine">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="activiti-bpmn-converter-5.17.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/activiti-bpmn-converter/activiti-bpmn-converter">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="activiti-bpmn-model-5.17.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/activiti-bpmn-model/activiti-bpmn-model">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="activiti-process-validation-5.17.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/activiti-process-validation/activiti-process-validation">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="activiti-image-generator-5.17.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/activiti-image-generator/activiti-image-generator">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="activiti-spring-5.17.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/activiti-spring/activiti-spring">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="activiti-rest-5.17.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/activiti-rest/activiti-rest">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="activiti-common-rest-5.17.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/activiti-common-rest/activiti-common-rest">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="activiti-simple-workflow-5.17.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/activiti-simple-workflow/activiti-simple-workflow">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="activiti-bpmn-layout-5.17.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/activiti-bpmn-layout/activiti-bpmn-layout">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="activiti-explorer-5.17.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/activiti-explorer/activiti-explorer">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="activiti-json-converter-5.17.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/activiti-json-converter/activiti-json-converter">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="activiti-crystalball-5.17.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/activiti-crystalball/activiti-crystalball">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="activiti-modeler-5.17.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/activiti-modeler/activiti-modeler">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="activiti-diagram-rest-5.17.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/activiti-diagram-rest/activiti-diagram-rest">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="context-root" value="activiti-demo"/>
         <property name="java-output-path" value="/activiti-demo/target/classes"/>
     </wb-module>

@@ -5,9 +5,12 @@
 <html  lang="zh-CN">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>index</title>
+<title>部署流程</title>
 </head>
 <body>
-<a href="${ctx}/workflow/predeploy">部署流程</a>
+	<form action="${ctx}/workflow/deploy" method="post" enctype="multipart/form-data">
+			<input type="file" name="file">
+			<input type="submit" value="Submit">
+	</form>
 </body>
 </html>

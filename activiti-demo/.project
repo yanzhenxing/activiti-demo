@@ -3,6 +3,21 @@
 	<name>activiti-demo</name>
 	<comment></comment>
 	<projects>
+		<project>activiti-cxf</project>
+		<project>activiti-bpmn-converter</project>
+		<project>activiti-bpmn-model</project>
+		<project>activiti-modeler</project>
+		<project>activiti-common-rest</project>
+		<project>activiti-json-converter</project>
+		<project>activiti-rest</project>
+		<project>activiti-explorer</project>
+		<project>activiti-image-generator</project>
+		<project>activiti-simple-workflow</project>
+		<project>activiti-crystalball</project>
+		<project>activiti-spring</project>
+		<project>activiti-engine</project>
+		<project>activiti-process-validation</project>
+		<project>activiti-diagram-rest</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
