@@ -15,6 +15,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,11 +23,13 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.quauq.yanzhenxing.activiti.service.UserService;
+import com.quauq.yanzhenxing.activiti.service.WorkflowService;
 import com.quauq.yanzhenxing.activiti.utils.WorkflowUtils;
 
 /**
  * 工作流controller
- * @description 
+ * 
+ * @description
  * @author yanzhenxing
  * @createDate 2015年9月16日
  */
@@ -46,41 +49,64 @@ public class WorkflowController {
 
 	@Autowired
 	private RepositoryService repositoryService;
+	
+	@Autowired
+	private WorkflowService workflowService;
 
 	@Autowired
 	private ObjectMapper objectMapper;
-	@RequestMapping(value="predeploy",method=RequestMethod.GET)
-	public String preDeploy(){
+
+	@RequestMapping(value = "predeploy", method = RequestMethod.GET)
+	public String preDeploy() {
 		return "modules/workflow/predeploy";
 	}
 	
-	 @RequestMapping(value = "/deploy")
-	    public String deploy(@RequestParam(value = "file", required = false) MultipartFile file) {
-//		 	String exportDir="";
-	        String fileName = file.getOriginalFilename();
+	/**
+	 * 显示已经部署的流程列表
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value="deploylist",method=RequestMethod.GET)
+	public String deployList(Model model){
+		
+		List<ProcessDefinition> list =workflowService.obtainProcessDefinitions(null);
+		
+		model.addAttribute("processDefinitions", list);
+		
+		return "modules/workflow/deploylist";
+	}
 
-	        try {
-	            InputStream fileInputStream = file.getInputStream();
-	            Deployment deployment = null;
+	@RequestMapping(value = "/deploy")
+	public String deploy(@RequestParam(value = "file", required = false) MultipartFile file) {
+		// String exportDir="";
+		String fileName = file.getOriginalFilename();
 
-	            String extension = FilenameUtils.getExtension(fileName);
-	            if (extension.equals("zip") || extension.equals("bar")) {
-	                ZipInputStream zip = new ZipInputStream(fileInputStream);
-	                deployment = repositoryService.createDeployment().addZipInputStream(zip).deploy();
-	            } else {
-	                deployment = repositoryService.createDeployment().addInputStream(fileName, fileInputStream).deploy();
-	            }
+		try {
+			InputStream fileInputStream = file.getInputStream();
+			Deployment deployment = null;
 
-	            List<ProcessDefinition> list = repositoryService.createProcessDefinitionQuery().deploymentId(deployment.getId()).list();
-	            System.out.println(list.size());
-//	            for (ProcessDefinition processDefinition : list) {
-//	                WorkflowUtils.exportDiagramToFile(repositoryService, processDefinition, exportDir);
-//	            }
+			String extension = FilenameUtils.getExtension(fileName);
+			if (extension.equals("zip") || extension.equals("bar")) {
+				ZipInputStream zip = new ZipInputStream(fileInputStream);
+				deployment = repositoryService.createDeployment().addZipInputStream(zip).deploy();
+			} else {
+				deployment = repositoryService.createDeployment().addInputStream(fileName, fileInputStream).deploy();
+			}
 
-	        } catch (Exception e) {
-	        	log.error("error on deploy process, because of file input stream", e);
-	        }
+			List<Deployment> list = repositoryService.createDeploymentQuery().processDefinitionKey("process1").list();
+			System.out.println(list.size());
+			// List<ProcessDefinition> list =
+			// repositoryService.createProcessDefinitionQuery().deploymentId(deployment.getId()).list();
+			// System.out.println(list.size());
+			// for (ProcessDefinition processDefinition : list) {
+			// WorkflowUtils.exportDiagramToFile(repositoryService,
+			// processDefinition, exportDir);
+			// }
 
-	        return "redirect:/";
-	    }
+		} catch (Exception e) {
+			log.error("error on deploy process, because of file input stream", e);
+		}
+
+		return "redirect:/";
+	}
 }

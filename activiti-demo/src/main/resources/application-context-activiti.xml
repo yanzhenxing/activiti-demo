@@ -85,6 +85,14 @@
                 </entry>
             </map>
         </property> -->
+        
+        <!-- 自定义用户权限 -->
+        <property name="customSessionFactories"> 
+            <list>
+				<bean class="com.quauq.yanzhenxing.activiti.service.ext.ActUserEntityServiceFactory"/>
+				<bean class="com.quauq.yanzhenxing.activiti.service.ext.ActGroupEntityServiceFactory"/>
+            </list>
+    	</property>
     </bean>
 
     <bean id="processEngine" class="org.activiti.spring.ProcessEngineFactoryBean">
