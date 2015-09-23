@@ -88,4 +88,18 @@ public class WorkflowService {
 		Assert.hasText(procInsId, "procInsId should not be empty!");
 		runtimeService.deleteProcessInstance(procInsId, deleteReason);
 	}
+	
+	/**
+	 * 删除部署的流程
+	 * @param deploymentId 流程部署ID
+	 * @param 是否级联删除运行的流程实例
+	 */
+	@Transactional(readOnly = false)
+	public void deleteDeployment(String deploymentId,boolean deleteProcIns) {
+		Assert.hasText(deploymentId, "deploymentId should not be empty!");
+		Assert.notNull(deleteProcIns, "deleteProcIns should not be null!");
+		repositoryService.deleteDeployment(deploymentId, deleteProcIns);
+	}
+	
+	
 }

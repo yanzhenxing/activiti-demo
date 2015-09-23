@@ -27,4 +27,16 @@ public class SystemUtils {
 		}
 		return null;
 	}
+	
+	/**
+	 * 获取当前登录用户名
+	 * @return
+	 */
+	public static String obtainLoginName(){
+		User user=obtainLoginUser();
+		if (user!=null) {
+			return user.getLoginName();
+		}
+		return null;
+	}
 }

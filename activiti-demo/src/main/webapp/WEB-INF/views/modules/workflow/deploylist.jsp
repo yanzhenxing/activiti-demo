@@ -14,6 +14,8 @@
 				<td>流程key</td>
 				<td>版本号</td>
 				<td></td>
+				<td></td>
+				<td></td>
 			</tr>
 		</thead>
 		<tbody>
@@ -21,7 +23,9 @@
 			<tr>
 				<td>${processDefinition.key }</td>
 				<td>${processDefinition.version }</td>
-				<td><a href="${ctx }/workflow/process/start?"></a></td>
+				<td><a href="${ctx }/workflow/process/resource?procDefId=${processDefinition.id }&resource=${processDefinition.diagramResourceName}" target="_blank">查看流程图片</a></td>
+				<td><a href="${ctx }/workflow/process/resource?procDefId=${processDefinition.id }&resource=${processDefinition.resourceName}" target="_blank">查看流程定义</a></td>
+				<td><a href="${ctx }/workflow/process/start?key=${processDefinition.key }">启动流程</a></td>
 			</tr>
 			</c:forEach>
 		</tbody>
