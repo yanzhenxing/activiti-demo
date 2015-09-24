@@ -8,6 +8,11 @@
 <title>流程列表</title>
 </head>
 <body>
+	<ul>
+		<li><a href="${ctx}/workflow/predeploy">部署流程</a></li>
+		<li><a href="${ctx}/workflow/task/todo">待办任务</a></li>
+	</ul>
+	<hr>
 	<table>
 		<thead>
 			<tr>
@@ -25,7 +30,8 @@
 				<td>${processDefinition.version }</td>
 				<td><a href="${ctx }/workflow/process/resource?procDefId=${processDefinition.id }&resource=${processDefinition.diagramResourceName}" target="_blank">查看流程图片</a></td>
 				<td><a href="${ctx }/workflow/process/resource?procDefId=${processDefinition.id }&resource=${processDefinition.resourceName}" target="_blank">查看流程定义</a></td>
-				<td><a href="${ctx }/workflow/process/start?key=${processDefinition.key }">启动流程</a></td>
+				<td><a href="${ctx }/workflow/process/start/getform/${processDefinition.id}">启动流程</a></td>
+				<%-- <td><a href="${ctx }/workflow/process/start/form?key=${processDefinition.key }">启动流程</a></td>--%>
 			</tr>
 			</c:forEach>
 		</tbody>

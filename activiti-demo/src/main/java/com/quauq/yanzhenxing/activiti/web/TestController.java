@@ -14,7 +14,7 @@ public class TestController {
 	public String login(Model model) {
 		Subject subject = SecurityUtils.getSubject();
 		if (subject != null && subject.isAuthenticated()) {
-			return "redirect:/";
+			return "redirect:/workflow/deploylist";
 		}
 		return "modules/sys/login";
 	}
