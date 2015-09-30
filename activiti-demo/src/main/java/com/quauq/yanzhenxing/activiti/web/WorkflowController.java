@@ -228,8 +228,8 @@ public class WorkflowController {
 	 */
 	@RequestMapping(value = "process/start", method = RequestMethod.POST)
 	public String start(Model model, HttpServletRequest request, HttpServletResponse response,
-			@RequestParam("key") String key, @RequestParam("startDate") Date startDate,
-			@RequestParam("endDate") Date endDate, @RequestParam("reason") String reason) {
+			@RequestParam("key") String key, @RequestParam(value="startDate",required=false) Date startDate,
+			@RequestParam(value="endDate",required=false) Date endDate, @RequestParam(value="reason",required=false) String reason) {
 		ProcessDefinition processDefinition = repositoryService.createProcessDefinitionQuery()
 				.processDefinitionKey(key).latestVersion().singleResult();
 
@@ -243,15 +243,21 @@ public class WorkflowController {
 		 */
 		identityService.setAuthenticatedUserId(loginName);
 
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		Map<String, String> variables = new HashMap<String, String>();
-		String startDateStr = sdf.format(startDate);
-		String endDateStr = sdf.format(endDate);
-
-		// 启动流程
-		variables.put("startDate", startDateStr);
-		variables.put("endDate", endDateStr);
-		variables.put("reason", reason);
+		
+		if (startDate!=null) {
+			
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			String startDateStr = sdf.format(startDate);
+			String endDateStr = sdf.format(endDate);
+			
+			// 启动流程
+			variables.put("startDate", startDateStr);
+			variables.put("endDate", endDateStr);
+			variables.put("reason", reason);
+		}
+		variables.put("assigneeList", "staff,leader,admin");
+		
 		ProcessInstance processInstance = formService.submitStartFormData(processDefinition.getId(), variables);
 
 		if (processInstance == null) {

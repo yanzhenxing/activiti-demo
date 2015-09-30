@@ -28,7 +28,7 @@
         <property name="transactionManager" ref="transactionManager"/>
         <property name="databaseSchemaUpdate" value="true"/>
         <property name="jobExecutorActivate" value="false"/>
-        <!--<property name="history" value="full"/>-->
+        <property name="history" value="full"/>
         <property name="processDefinitionCacheLimit" value="10"/>
 
         <!-- mail 
@@ -57,14 +57,13 @@
             </list>
         </property>-->
 
+        
         <!-- 自定义表单字段类型 -->
-        <!-- <property name="customFormTypes">
-            <list>
-                <bean class="me.kafeitu.demo.activiti.activiti.form.UsersFormType"/>
-            </list>
-        </property> -->
 		<property name="customFormTypes">
 			<list>
+				<!--  用户多实例任务（会签）中任务待分配人列表 -->
+				<bean class="com.quauq.yanzhenxing.activiti.form.UsersFormType"/>
+				
 				<bean class="org.activiti.explorer.form.UserFormType" />
 				<bean class="org.activiti.explorer.form.ProcessDefinitionFormType" />
 				<bean class="org.activiti.explorer.form.MonthFormType" />
