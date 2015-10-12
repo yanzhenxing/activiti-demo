@@ -6,7 +6,7 @@ import org.activiti.engine.impl.persistence.entity.GroupIdentityManager;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
- * 
+ * 自定义Group服务Factory
  * @author yanzhenxing
  * @createDate 2015年9月17日
  */

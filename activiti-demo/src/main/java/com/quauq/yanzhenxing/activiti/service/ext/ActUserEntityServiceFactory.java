@@ -6,9 +6,9 @@ import org.activiti.engine.impl.persistence.entity.UserIdentityManager;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
- * Activiti User Entity Service Factory
- * @author ThinkGem
- * @version 2013-11-03
+ * 自定义user 服务Factory
+ * @author yanzhenxing
+ * @createDate 2015年9月17日
  */
 public class ActUserEntityServiceFactory implements SessionFactory {
 	

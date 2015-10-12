@@ -22,7 +22,7 @@ import com.quauq.yanzhenxing.activiti.service.RoleService;
 import com.quauq.yanzhenxing.activiti.service.UserService;
 
 /**
- * 自定义Activiti Group服务 
+ * 自定义 Group服务 
  * @author yanzhenxing
  * @createDate 2015年9月17日
  */
@@ -30,10 +30,10 @@ import com.quauq.yanzhenxing.activiti.service.UserService;
 public class ActGroupEntityService extends GroupEntityManager {
 
 	@Autowired
-	private UserService userService;
+	private UserService userService;//系统的用户服务
 	
 	@Autowired
-	private RoleService roleService;
+	private RoleService roleService;//系统的角色服务
 
 	public Group createNewGroup(String groupId) {
 		return new GroupEntity(groupId);

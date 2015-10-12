@@ -25,18 +25,18 @@ import com.quauq.yanzhenxing.activiti.service.RoleService;
 import com.quauq.yanzhenxing.activiti.service.UserService;
 
 /**
- * Activiti User Entity Service
- * @author ThinkGem
- * @version 2013-11-03
+ * 自定义user 服务
+ * @author yanzhenxing
+ * @createDate 2015年9月17日
  */
 @Service
 public class ActUserEntityService extends UserEntityManager {
 
 	@Autowired
-	private UserService userService;
+	private UserService userService;//系统的用户服务
 	
 	@Autowired
-	private RoleService roleService;
+	private RoleService roleService;//系统的角色服务
 	
 	public User createNewUser(String userId) {
 		return new UserEntity(userId);
